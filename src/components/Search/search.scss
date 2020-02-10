@@ -1,0 +1,35 @@
+.search-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.input-search {
+  margin: 0 20% 0 0;
+  border-radius: 5px;
+  border-spacing: 0;
+  border: 1px solid #E0E0E0;
+  height: 15%;
+  padding: 0 2% 0 30px;
+  font-size: 1.1rem;
+  color: dimgrey;
+  background: url(../../assets/svg/search.svg) no-repeat scroll;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    cursor: text;
+  }
+}
+
+
+

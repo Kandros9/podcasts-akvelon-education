@@ -1,0 +1,39 @@
+.side-bar-box {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.side-bar-item {
+  margin-bottom: 10px;
+
+  &:hover {
+    border: solid #c71e67;
+    border-width: 0 0 0 5px;
+    cursor: pointer;
+
+    div {
+      color: #c71e67;
+    }
+
+    svg {
+      fill: #c71e67;
+    }
+  }
+}
+
+.side-bar-item-content {
+  display: flex;
+  align-items: center;
+  margin-left: 20%;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #6d7a88;
+  min-height: 50px;
+  height: 8%;
+}
+
+
+
