@@ -1,34 +1,36 @@
-import React, {useEffect, createRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './card.scss'
-import red_card from "../../assets/png/red_card.png"
-import blue_card from "../../assets/png/blue_card.png"
-import pink_card from "../../assets/png/pink_card.png"
 import {getCardsImage} from "../../helpers/average_color";
 import {fetchBestPodcasts, getImagesColor} from "../../api";
 import Card from "./Card";
 import {Colors, Podcast} from "../../types/data";
 import {RouteComponentProps, withRouter} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {addBestPodcastsAction, addBestPodcastsCardsAction} from "../../redux/actions";
+import {RootState} from "../../redux/reducers";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const CardList = (props: RouteComponentProps) => {
 
-    const [podcasts, setPodcasts] = useState([]);
     const [isLoading, setLoading] = useState(true);
-    const [cardColors, setCardColors] = useState([] as string[]);
+    const dispatch = useDispatch();
+    const podcasts = useSelector((state: RootState) => state.podcasts);
 
     useEffect(() => {
-        fetchBestPodcasts().then(result => {
-            setPodcasts(result.podcasts);
-            getImagesColor(result.podcasts.map((podcast: Podcast) => podcast.thumbnail)).then((colors: Colors) => {
-                setCardColors(getCardsImage(colors.dominant_colors));
-                setLoading(false);
-            })
-        });
-
+        if (podcasts.best_podcasts.length == 0 && podcasts.best_podcasts_cards.length == 0)
+            fetchBestPodcasts().then(result => {
+                getImagesColor(result.podcasts.map((podcast: Podcast) => podcast.thumbnail)).then((colors: Colors) => {
+                    dispatch(addBestPodcastsAction(result.podcasts));
+                    dispatch(addBestPodcastsCardsAction(getCardsImage(colors.dominant_colors)));
+                    setLoading(false);
+                })
+            });
+        else setLoading(false);
     }, []);
 
 
-    return (isLoading ? <div>Loading...</div> : <>
-            {podcasts.map((podcast: Podcast, index) => <Card key={podcast.id} podcast={podcast} cardColor={cardColors[index]} {...props}/>)}
+    return (isLoading ? <LoadingSpinner/> : <>
+            {podcasts.best_podcasts.map((podcast: Podcast, index: number) => <Card key={podcast.id} podcast={podcast} cardColor={podcasts.best_podcasts_cards[index]} {...props}/>)}
         </>
     );
 };

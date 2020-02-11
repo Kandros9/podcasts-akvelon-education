@@ -3,11 +3,12 @@ import './side_bar.scss'
 import DiscoverIcon from "../Icons/DiscoverIcon";
 import MyPodcastsIcon from "../Icons/MyPodcastsIcon";
 import GenresIcon from "../Icons/GenresIcon";
+import {RouteComponentProps} from "react-router";
 
-const SideBar = () => {
+const SideBar = (props: RouteComponentProps) => {
 
     const forward = (item: string) => {
-        window.location.href = `/${item}`
+        props.history.push(`/${item}`)
     };
 
     return (

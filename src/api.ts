@@ -14,5 +14,13 @@ export const fetchBestPodcasts = async () => {
         }
     });
     return response.data;
+};
 
+export const fetchPodcast = async (id: string) => {
+    const response = await axios.get(`https://listen-api.listennotes.com/api/v2/podcasts/${id}?next_episode_pub_date=0&sort=recent_first`, {
+        headers: {
+            'X-ListenAPI-Key': 'd96f41d6bacd46bcbe2e0a51f5bce35a'
+        }
+    });
+    return response.data;
 };

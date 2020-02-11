@@ -1,8 +1,5 @@
-import React, {useEffect, createRef, useState} from 'react';
+import React, {createRef} from 'react';
 import './card.scss'
-import red_card from "../../assets/png/red_card.png"
-import blue_card from "../../assets/png/blue_card.png"
-import pink_card from "../../assets/png/pink_card.png"
 
 import {Podcast} from "../../types/data";
 import {RouteComponentProps} from "react-router-dom";
@@ -26,7 +23,7 @@ const Card = (props: Props) => {
     };
 
     const forwardToPodcastView = () => {
-        props.history.push(`/podcast/${podcast.title}`)
+        props.history.push(`/podcast/${podcast.id}`)
     };
 
     return (

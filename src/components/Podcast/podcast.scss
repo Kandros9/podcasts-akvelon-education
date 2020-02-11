@@ -1,0 +1,40 @@
+.podcast-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5%;
+  justify-content: left;
+
+  h1 {
+    font-stretch: semi-condensed;
+  }
+
+  h2 {
+    font-stretch: semi-condensed;
+    color: #6d7a88;
+  }
+}
+
+.podcast-image {
+  padding-right: 30px;
+  width: 15%;
+  height: auto;
+}
+
+.website-btn {
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  padding: 3% 5%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #e7e7e7;
+  }
+}

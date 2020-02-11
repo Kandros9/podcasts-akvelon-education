@@ -1,17 +1,27 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './main_grid.scss'
 import podcast_logo from '../../assets/png/podcast_logo.png'
 import SideBar from "../SideBar/SideBar";
 import Search from "../Search/Search";
+import Discover from "../DiscoverPage/DiscoverPage";
+import Podcast from "../Podcast/PodcastView";
+import {RouteComponentProps, withRouter} from "react-router";
 
 
-const MainGrid = (props: any) => {
+const MainGrid = (props: RouteComponentProps) => {
 
-        const [title, setTitle] = useState("");
+        const page_name = window.location.pathname.split("/")[1].toUpperCase().replace("_", " ");
 
-        useEffect(() => {
-               setTitle(window.location.pathname.split("/")[1].toUpperCase().replace("_", " "))
-        }, []);
+        const renderMainArea = () => {
+                switch (page_name) {
+                        case 'DISCOVER':
+                                return <Discover {...props}/>;
+                        case 'PODCAST':
+                                return <Podcast {...props}/>;
+                        default:
+                                return null;
+                }
+        };
 
         return (
             <div className="main-grid">
@@ -19,20 +29,20 @@ const MainGrid = (props: any) => {
                         <img src={podcast_logo} alt="Logo"/>
                 </div>
                 <div className="page-title">
-                        <h1>{title}</h1>
+                        <h1>{page_name}</h1>
                 </div>
                 <div className="search">
                         <Search/>
                 </div>
                 <div className="nav">
-                        <SideBar/>
+                        <SideBar {...props}/>
                 </div>
                 <div className="main-area">
-                        {props.children}
+                        {renderMainArea()}
                 </div>
             </div>
         );
 };
 
 
-export default MainGrid;
+export default withRouter(MainGrid);
