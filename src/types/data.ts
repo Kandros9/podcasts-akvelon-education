@@ -30,3 +30,13 @@ export interface Episode {
     audio_length_sec: number,
     thumbnail: string,
 }
+
+export interface Genre {
+    id: number,
+    name: string,
+    parent_id: number
+}
+
+export interface Genres {
+    genres: Array<Genre>
+}
