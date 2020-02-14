@@ -1,0 +1,19 @@
+@function calcFluidFontSize($f-min, $f-max, $v-min, $v-max) {
+  $k: ($f-max - $f-min)/($v-max - $v-min);
+  $b: $f-min - $k * $v-min;
+
+  $b: $b * 1px;
+
+  @return calc( #{$k} * 100vw + #{$b} );
+}
+
+@mixin details-block {
+  width: 80%;
+  padding: 5% 0 0 2%;
+  line-height: 180%;
+
+  h2 {
+    margin-top: 0;
+    color: $grey-theme;
+  }
+}

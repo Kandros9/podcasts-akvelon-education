@@ -2,13 +2,14 @@ import React, {useEffect, useState} from 'react';
 import './podcast.scss'
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {fetchGenres, fetchPodcast} from "../../api";
-import {Genre, Genres, PodcastDetail} from "../../types/data";
+import {Episode, Genre, Genres, PodcastDetail} from "../../types/data";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import language from "../../assets/svg/language.svg"
 import country from "../../assets/svg/country.svg"
 import total_episodes from "../../assets/svg/total_episodes.svg"
 import since from "../../assets/svg/since.svg"
 import moment from "moment";
+import EpisodeList from "../Episodes/EpisodeList";
 
 interface MatchParams {
     id: string;
@@ -21,6 +22,7 @@ const PodcastView = (props: Props) => {
     const [isLoading, setLoading] = useState(true);
     const [podcast, setPodcast] = useState<PodcastDetail>({} as PodcastDetail);
     const [genres, setGenres] = useState([] as JSX.Element[]);
+    const [episodes, setEpisodes] = useState([] as Episode[]);
 
     //const podcastId = props.match.params.id;
     const podcastId = window.location.pathname.split("/")[2];
@@ -33,6 +35,7 @@ const PodcastView = (props: Props) => {
                     return podcast.genre_ids.includes(genre.id)
                 }).map((genre: Genre) => <div key={genre.id} className="genre">{genre.name}</div>))
             });
+            setEpisodes(podcast.episodes);
             setLoading(false);
         });
     }, []);
@@ -75,6 +78,7 @@ const PodcastView = (props: Props) => {
                         </div>
                     </div>
                 </div>
+                <EpisodeList episodes={episodes} {...props}/>
             </div>
     );
 };

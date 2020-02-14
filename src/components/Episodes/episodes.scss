@@ -1,0 +1,39 @@
+@import '../../components/base_tools.scss';
+$grey-theme: #6d7a88;
+
+.podcast-episodes {
+  @include details-block;
+}
+
+.episode-item {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2%;
+
+  h4 {
+    font-size: calcFluidFontSize(12, 22, 400, 1900);
+    width : 120%;
+    overflow:hidden;
+    display:inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  p {
+    color: $grey-theme;
+    margin: 0;
+    font-weight: normal;
+  }
+}
+
+.episode-header {
+  width: 70%;
+  margin-left: 2%;
+}
+
+.episode-image {
+  width: 7rem;
+  margin: 0 0 3% 0;
+  border-radius: 2px;
+}
