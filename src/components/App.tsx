@@ -5,6 +5,7 @@ import {Router, Switch, Route, Redirect} from 'react-router-dom';
 import "./App.scss"
 import Discover from "./DiscoverPage/DiscoverPage";
 import PodcastView from "./Podcast/PodcastView";
+import Player from "./AudioPlayer/AudioPlayer";
 
 const history = createBrowserHistory();
 
@@ -19,7 +20,7 @@ const App = () => {
                         <Route path='/podcast/:id'/>
                     </Switch>
                 </Router>
-            <div className="player">Player</div>
+            <div className="player"><Player/></div>
         </>
     );
 };

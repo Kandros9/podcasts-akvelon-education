@@ -13,3 +13,10 @@ export const addBestPodcastsCardsAction = (cards: Array<string>) => ({
         best_podcasts_cards: cards
     }
 });
+
+export const addEpisodeToPlayerAction = (audio: string) => ({
+    type: "ADD_EPISODE_TO_PLAYER",
+    payload: {
+        audio: audio
+    }
+});

@@ -9,6 +9,8 @@ $grey-theme: #6d7a88;
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 2%;
+  position: relative;
+  min-height: 8rem;
 
   h4 {
     font-size: calcFluidFontSize(12, 22, 400, 1900);
@@ -36,4 +38,26 @@ $grey-theme: #6d7a88;
   width: 7rem;
   margin: 0 0 3% 0;
   border-radius: 2px;
+}
+
+.play-button {
+  display: flex;
+  position: absolute;
+  bottom: 10%;
+  align-items: center;
+  font-weight: normal;
+  font-size: 0.9rem;
+  color: dimgrey;
+
+  svg {
+    cursor: pointer;
+    fill: #6d7a88;
+    width: 13%;
+    height: auto;
+    transition-duration: 0.3s;
+
+    &:hover {
+      fill: #c71e67;
+    }
+  }
 }

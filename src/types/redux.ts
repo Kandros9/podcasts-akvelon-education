@@ -9,3 +9,7 @@ export type PodcastsState = {
     best_podcasts: Array<Podcast>;
     best_podcasts_cards: Array<string>
 };
+
+export type AudioState = {
+    audio: string
+};

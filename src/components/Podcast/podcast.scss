@@ -99,3 +99,31 @@ $grey-theme: #6d7a88;
   height: auto;
   margin-right: 5px;
 }
+
+.load-block {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.load-button {
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  padding: 8px 10%;
+  text-align: center;
+  font-weight: normal;
+  display: inline-block;
+  font-size: 1rem;
+  transition-duration: 0.4s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #e7e7e7;
+  }
+}
+
+.episode-loader-wrapper {
+  margin-bottom: 3%;
+}

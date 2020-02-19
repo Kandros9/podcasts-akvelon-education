@@ -38,7 +38,8 @@ const MainGrid = (props: RouteComponentProps) => {
                         <SideBar {...props}/>
                 </div>
                 <div className="main-area">
-                        {renderMainArea()}
+                        <div className="scroll_area">{renderMainArea()}</div>
+
                 </div>
             </div>
         );

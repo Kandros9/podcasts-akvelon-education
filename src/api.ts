@@ -13,8 +13,8 @@ export const fetchBestPodcasts = async () => {
     return response.data;
 };
 
-export const fetchPodcast = async (id: string) => {
-    const response = await axios.get(`https://listen-api.listennotes.com/api/v2/podcasts/${id}?next_episode_pub_date=0&sort=recent_first`);
+export const fetchPodcast = async (id: string, nextEpisodePubDate: number = 0) => {
+    const response = await axios.get(`https://listen-api.listennotes.com/api/v2/podcasts/${id}?next_episode_pub_date=${nextEpisodePubDate}&sort=recent_first`);
     return response.data;
 };
 

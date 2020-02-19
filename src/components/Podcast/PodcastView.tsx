@@ -10,6 +10,7 @@ import total_episodes from "../../assets/svg/total_episodes.svg"
 import since from "../../assets/svg/since.svg"
 import moment from "moment";
 import EpisodeList from "../Episodes/EpisodeList";
+import EpisodesLoadingSpinner from "../LoadingSpinner/EpisodesLoadingSpinner";
 
 interface MatchParams {
     id: string;
@@ -23,6 +24,7 @@ const PodcastView = (props: Props) => {
     const [podcast, setPodcast] = useState<PodcastDetail>({} as PodcastDetail);
     const [genres, setGenres] = useState([] as JSX.Element[]);
     const [episodes, setEpisodes] = useState([] as Episode[]);
+    const [isEpisodesLoading, setEpisodesLoading] = useState(false);
 
     //const podcastId = props.match.params.id;
     const podcastId = window.location.pathname.split("/")[2];
@@ -30,6 +32,7 @@ const PodcastView = (props: Props) => {
     useEffect(() => {
         fetchPodcast(podcastId).then((podcast: PodcastDetail) => {
             setPodcast(podcast);
+            console.log(podcast)
             fetchGenres().then((genresObject: Genres) => {
                 setGenres(genresObject.genres.filter((genre: Genre) => {
                     return podcast.genre_ids.includes(genre.id)
@@ -39,6 +42,16 @@ const PodcastView = (props: Props) => {
             setLoading(false);
         });
     }, []);
+
+    const loadNextEpisodes = () => {
+        setEpisodesLoading(true);
+        fetchPodcast(podcastId, podcast.next_episode_pub_date).then((podcast: PodcastDetail) => {
+            let newEpisodes = episodes.concat(podcast.episodes);
+            setPodcast(podcast);
+            setEpisodes(newEpisodes);
+            setEpisodesLoading(false)
+        });
+    };
 
     return (isLoading ? <LoadingSpinner/> :
             <div className="podcast-container">
@@ -79,6 +92,9 @@ const PodcastView = (props: Props) => {
                     </div>
                 </div>
                 <EpisodeList episodes={episodes} {...props}/>
+                <div className="load-block">
+                    {podcast.next_episode_pub_date && (isEpisodesLoading ? <EpisodesLoadingSpinner/> : <div className="load-button" onClick={loadNextEpisodes}>Load more</div>)}
+                </div>
             </div>
     );
 };

@@ -52,9 +52,15 @@
 .main-area {
   position: relative;
   grid-column: 2/4;
-  overflow-y: scroll;
   background: url(../../assets/png/podcast_field.png) 97% 3% no-repeat;
   background-size: 15%;
+}
+
+.scroll_area {
+  position: absolute;
+  overflow-y: scroll;
+  height: 88%;
+  width: 100%;
 }
 
 /*
