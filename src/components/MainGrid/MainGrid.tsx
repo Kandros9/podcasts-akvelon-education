@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './main_grid.scss'
 import podcast_logo from '../../assets/png/podcast_logo.png'
 import SideBar from "../SideBar/SideBar";
@@ -6,11 +6,21 @@ import Search from "../Search/Search";
 import Discover from "../DiscoverPage/DiscoverPage";
 import Podcast from "../Podcast/PodcastView";
 import {RouteComponentProps, withRouter} from "react-router";
+import SearchArea from "../Search/SearchArea";
 
 
 const MainGrid = (props: RouteComponentProps) => {
 
-        const page_name = window.location.pathname.split("/")[1].toUpperCase().replace("_", " ");
+        const [param, setParam] =  useState("");
+
+        let parameter = window.location.pathname.split("/")[2];
+
+        let title = parameter && parameter.split("-")[0].replace("%20", " ");
+
+        let total =  parameter && parameter.split("-")[1];
+
+        let page_name = window.location.pathname.split("/")[1].toUpperCase().replace("_", " ");
+        page_name = (title && total) ? page_name + " - " + title + ` (total ${total})`: page_name;
 
         const renderMainArea = () => {
                 switch (page_name) {
@@ -18,6 +28,8 @@ const MainGrid = (props: RouteComponentProps) => {
                                 return <Discover {...props}/>;
                         case 'PODCAST':
                                 return <Podcast {...props}/>;
+                        case 'SEARCH':
+                                return <SearchArea param={param} setParam={setParam} {...props}/>;
                         default:
                                 return null;
                 }
@@ -32,7 +44,7 @@ const MainGrid = (props: RouteComponentProps) => {
                         <h1>{page_name}</h1>
                 </div>
                 <div className="search">
-                        <Search/>
+                        <Search setParam={setParam} {...props}/>
                 </div>
                 <div className="nav">
                         <SideBar {...props}/>

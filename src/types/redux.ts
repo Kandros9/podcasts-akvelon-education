@@ -1,4 +1,4 @@
-import {Podcast} from "./data";
+import {Episode, Podcast, PodcastSearchItem, SearchPodcasts} from "./data";
 
 export type Action = {
     type: string;
@@ -11,5 +11,12 @@ export type PodcastsState = {
 };
 
 export type AudioState = {
-    audio: string
+    episode: Episode,
+    playButton: string
+};
+
+export type SearchState = {
+    results: Array<PodcastSearchItem>,
+    next_offset: number,
+    colors: Array<string>
 };

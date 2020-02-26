@@ -30,7 +30,8 @@ const CardList = (props: RouteComponentProps) => {
 
 
     return (isLoading ? <LoadingSpinner/> : <>
-            {podcasts.best_podcasts.map((podcast: Podcast, index: number) => <Card key={podcast.id} podcast={podcast} cardColor={podcasts.best_podcasts_cards[index]} {...props}/>)}
+            {podcasts.best_podcasts.map((podcast: Podcast, index: number) =>
+                <Card key={podcast.id} id={podcast.id} title={podcast.title} thumbnail={podcast.thumbnail} cardColor={podcasts.best_podcasts_cards[index]} {...props}/>)}
         </>
     );
 };

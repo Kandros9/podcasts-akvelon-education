@@ -5,12 +5,14 @@ import {Podcast} from "../../types/data";
 import {RouteComponentProps} from "react-router-dom";
 
 type Props = RouteComponentProps & {
-    podcast: Podcast;
+    id: string,
+    title: string;
+    thumbnail: string,
     cardColor: string;
 };
 
 const Card = (props: Props) => {
-    const { podcast, cardColor } = props;
+    const { id, title, thumbnail, cardColor } = props;
 
     let img = createRef<HTMLImageElement>();
 
@@ -23,14 +25,14 @@ const Card = (props: Props) => {
     };
 
     const forwardToPodcastView = () => {
-        props.history.push(`/podcast/${podcast.id}`)
+        props.history.push(`/podcast/${id}`)
     };
 
     return (
         <div className="card" onClick={forwardToPodcastView}>
             <img className="card-image" src={cardColor} alt="card" />
-            <span className="card-title">{cropTitle(podcast.title)}</span>
-            <img ref={img} src={podcast.thumbnail}
+            <span className="card-title">{cropTitle(title)}</span>
+            <img ref={img} src={thumbnail}
                  className="podcast-cover" alt="cover"/>
 
         </div>

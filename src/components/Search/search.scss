@@ -1,7 +1,9 @@
+@import '../../components/DiscoverPage/discover';
+
 .search-container {
-  display: flex;
+  /*display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center;*/
   height: 100%;
 }
 
@@ -12,15 +14,16 @@ select {
 }
 
 .input-search {
-  margin: 0 20% 0 0;
+  margin: 25% 20% 0 0;
   border-radius: 5px;
   border-spacing: 0;
   border: 1px solid #E0E0E0;
-  height: 15%;
+  height: 30px;
   padding: 0 2% 0 30px;
   font-size: 1.1rem;
   color: dimgrey;
   background: url(../../assets/svg/search.svg) no-repeat scroll;
+  width: 15rem;
 
   &:hover {
     cursor: pointer;
@@ -29,6 +32,40 @@ select {
   &:focus {
     cursor: text;
   }
+}
+
+.search-result {
+  border: 1px lightgrey solid;
+  border-radius: 5px;
+  width: 17rem;
+  z-index: 2000;
+  position: fixed;
+}
+
+.search-result-list {
+  padding: 0;
+  margin: 0;
+  position: relative;
+
+  li {
+    font-weight: normal;
+    padding: 4%;
+    list-style-type: none;
+    border-top: 1px lightgrey solid;
+    background-color: white;
+
+    &:hover {
+      background-color: #e7e7e7;
+      cursor: pointer;
+    }
+  }
+}
+
+.search-title {
+  font-size: 1.2rem;
+  margin-left: 10%;
+  margin-top: 2%;
+  font-weight: normal;
 }
 
 

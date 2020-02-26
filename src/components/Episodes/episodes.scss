@@ -52,12 +52,21 @@ $grey-theme: #6d7a88;
   svg {
     cursor: pointer;
     fill: #6d7a88;
-    width: 13%;
+    width: 12%;
     height: auto;
     transition-duration: 0.3s;
 
     &:hover {
       fill: #c71e67;
     }
+  }
+}
+.active {
+  svg {
+    cursor: pointer;
+    fill: #c71e67;
+    width: 12%;
+    height: auto;
+    transition-duration: 0.3s;
   }
 }

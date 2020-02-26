@@ -1,7 +1,5 @@
 @import '../../components/base_tools.scss';
 
-$grey-theme: #6d7a88;
-
 .podcast-container {
   padding: 6%;
 
@@ -28,27 +26,34 @@ $grey-theme: #6d7a88;
 .podcast-image {
   margin-right: 30px;
   width: 15%;
-  height: auto;
+  height: 100%;
   border-radius: 5px;
   border: 4px $grey-theme solid;
+  background-size: 100% 100%;
 }
 
 .website-btn {
   background-color: white;
   color: black;
-  border: 2px solid #e7e7e7;
-  border-radius: 3px;
-  padding: 8px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 1rem;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  margin-top: 10%;
+  @include btn;
+  margin-top: 5%;
 
   &:hover {
     background-color: #e7e7e7;
+  }
+}
+
+.subscribe-btn {
+  background-color: #e7e7e7;
+  color: dimgrey;
+  @include btn;
+  margin-top: 5%;
+  margin-right: 3%;
+
+  &:hover {
+    color: black;
+    background-color: lightgrey;
+    border-color: lightgrey;
   }
 }
 

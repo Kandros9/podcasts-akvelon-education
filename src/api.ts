@@ -22,3 +22,13 @@ export const fetchGenres = async () => {
     const response = await axios.get('https://listen-api.listennotes.com/api/v2/genres');
     return response.data;
 };
+
+export const fetchSearch = async (q: string) => {
+    const response = await axios.get(`https://listen-api.listennotes.com/api/v2/typeahead?q=${q}&show_podcasts=1&show_genres=1&safe_mode=1`);
+    return response.data;
+};
+
+export const fetchSearchPodcasts = async (q: string, offset: number = 0) => {
+    const response = await axios.get(`https://listen-api.listennotes.com/api/v2/search?q=${q}&sort_by_date=0&type=podcast&offset=${offset}&only_in=title%2Cdescription&safe_mode=1`);
+    return response.data;
+};

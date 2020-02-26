@@ -1,10 +1,50 @@
 .player-container {
-
+  display: flex;
+  position: relative;
 }
 
 .audio-player {
+  position: absolute;
   width: 70%;
   margin-left: 20%;
+  margin-top: 1%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.audio-header {
+  position: absolute;
+  display: flex;
+  margin-left: 3%;
+  width: 15%;
+}
+.audio-header-img {
+  position: relative;
+  width: 4%;
+  min-width: 70px;
+  height: auto;
+  margin-right: 5%;
+  border-radius: 10px;
+  border: 3px white solid;
+  filter: drop-shadow(1px 10px 7px grey);
+  top: -1em;
+}
+
+.audio-header-title {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 12%;
+  font-size: 0.9rem;
+}
+
+.audio-loader {
+  position: absolute;
+  right: 5%;
   margin-top: 1%;
 }
 

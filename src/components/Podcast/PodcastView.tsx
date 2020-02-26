@@ -26,13 +26,11 @@ const PodcastView = (props: Props) => {
     const [episodes, setEpisodes] = useState([] as Episode[]);
     const [isEpisodesLoading, setEpisodesLoading] = useState(false);
 
-    //const podcastId = props.match.params.id;
     const podcastId = window.location.pathname.split("/")[2];
 
     useEffect(() => {
         fetchPodcast(podcastId).then((podcast: PodcastDetail) => {
             setPodcast(podcast);
-            console.log(podcast)
             fetchGenres().then((genresObject: Genres) => {
                 setGenres(genresObject.genres.filter((genre: Genre) => {
                     return podcast.genre_ids.includes(genre.id)
@@ -60,6 +58,7 @@ const PodcastView = (props: Props) => {
                     <div>
                         <h1>{podcast.title}</h1>
                         <h3>By {podcast.publisher}</h3>
+                        <button className="subscribe-btn" onClick={e => window.open(podcast.website)}>Subscribe</button>
                         <button className="website-btn" onClick={e => window.open(podcast.website)}>Website</button>
                     </div>
                 </div>

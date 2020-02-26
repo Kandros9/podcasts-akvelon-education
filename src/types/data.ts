@@ -40,3 +40,23 @@ export interface Genre {
 export interface Genres {
     genres: Array<Genre>
 }
+
+export interface Search {
+    terms: Array<string>,
+    genres: Array<Genre>,
+    podcasts: Array<Podcast>
+}
+
+export interface PodcastSearchItem {
+    id: string,
+    title_original: string,
+    publisher_original: string,
+    thumbnail: string,
+    description_original: string,
+}
+
+export interface SearchPodcasts {
+    results: Array<PodcastSearchItem>,
+    next_offset: number,
+    total: number
+}
