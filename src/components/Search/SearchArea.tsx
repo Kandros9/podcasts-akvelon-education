@@ -27,7 +27,7 @@ const SearchArea = (props: Props) => {
     //const term = window.location.pathname.split("/")[2];
 
     function fetch() {
-        setPodcastsLoading(true);
+        !isLoading && setPodcastsLoading(true);
         fetchSearchPodcasts(props.param, search.next_offset).then(result => {
             console.log(result);
             getImagesColor(result.results.map((podcast: PodcastSearchItem) => podcast.thumbnail)).then((colors: Colors) => {
@@ -50,16 +50,18 @@ const SearchArea = (props: Props) => {
     return <div>
         {/*<div className="search-title">Search: {props.param} (total {search.result.total})</div>*/}
         <div className="card-container">
-        {isLoading ? <LoadingSpinner/> :
-            search.results.map((podcast: PodcastSearchItem, index: number) => {
-                console.log(podcast)
-                return <Card key={podcast.id} id={podcast.id} title={podcast.title_original} thumbnail={podcast.thumbnail}
-                      cardColor={search.colors[index]} {...props}/>
-            })}
-    </div>
+            {isLoading ? <LoadingSpinner/> :
+                search.results.map((podcast: PodcastSearchItem, index: number) => {
+                    return <Card key={podcast.id} id={podcast.id} title={podcast.title_original}
+                                 thumbnail={podcast.thumbnail}
+                                 cardColor={search.colors[index]} {...props}/>
+                })}
+        </div>
         <div className="load-block">
-            {search.next_offset !=0 && (isPodcastsLoading ? <EpisodesLoadingSpinner/> :<div className="load-button" onClick={fetch}>Load more</div>)}
-        </div><br/>
+            {search.next_offset != 0 && (isPodcastsLoading ? <EpisodesLoadingSpinner/> :
+                <div className="load-button" onClick={fetch}>Load more</div>)}
+        </div>
+        <br/>
     </div>;
 };
 

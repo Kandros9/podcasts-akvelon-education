@@ -60,3 +60,11 @@ export interface SearchPodcasts {
     next_offset: number,
     total: number
 }
+
+export interface PodcastShortInfo {
+    id: string,
+    title: string,
+    thumbnail: string,
+    publisher: string,
+    last_played: number
+}

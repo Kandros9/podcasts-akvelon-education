@@ -1,0 +1,73 @@
+@import '../../components/base_tools.scss';
+
+.my-podcasts-container {
+  padding: 5%;
+}
+
+.my-podcast {
+  padding-left: 2%;
+  padding-bottom: 2%;
+}
+
+.my-podcast-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  padding: 2%;
+
+  h1 {
+    font-size: calcFluidFontSize(20, 32, 400, 1900);
+    width: 100%;
+    overflow:hidden;
+    display:inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  h3 {
+    font-size: calcFluidFontSize(14, 32, 400, 1900);
+    color: $grey-theme;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  &:hover {
+    background-color: #fbfbfb;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 80%;
+
+    h1 {
+      color: #c71e67;
+    }
+  }
+}
+
+.podcast-image {
+  margin-right: 30px;
+  width: 30%;
+  max-width: 12em;
+  min-width: 12em;
+  height: auto;
+  border-radius: 5px;
+  border: 4px $grey-theme solid;
+  background-size: 100% 100%;
+}
+
+
+
+.no-podcasts {
+  font-size: 1.2rem;
+  color: #282c34;
+  font-weight: normal;
+}
+
+.unsubscribe-btn {
+  background-color: white;
+  color: black;
+  @include btn;
+
+  &:hover {
+    background-color: #e7e7e7;
+  }
+}

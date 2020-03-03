@@ -23,6 +23,10 @@
   }
 }
 
+.podcast-header-info {
+  width: 70%;
+}
+
 .podcast-image {
   margin-right: 30px;
   width: 15%;
@@ -36,7 +40,6 @@
   background-color: white;
   color: black;
   @include btn;
-  margin-top: 5%;
 
   &:hover {
     background-color: #e7e7e7;
@@ -45,9 +48,8 @@
 
 .subscribe-btn {
   background-color: #e7e7e7;
-  color: dimgrey;
+  color: #414141;
   @include btn;
-  margin-top: 5%;
   margin-right: 3%;
 
   &:hover {
@@ -55,6 +57,26 @@
     background-color: lightgrey;
     border-color: lightgrey;
   }
+}
+
+.subscribe-btn-added {
+  @include btn;
+  color: #414141;
+  margin-right: 3%;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 1%;
+  background-color: white;
+  border: none;
+
+  svg {
+    vertical-align: middle;
+    width: 20px;
+    height: 15px;
+    margin-right: 5px;
+    fill: #414141;
+  }
+
 }
 
 .podcast-description {

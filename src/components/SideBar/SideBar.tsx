@@ -4,6 +4,7 @@ import DiscoverIcon from "../Icons/DiscoverIcon";
 import MyPodcastsIcon from "../Icons/MyPodcastsIcon";
 import GenresIcon from "../Icons/GenresIcon";
 import {RouteComponentProps} from "react-router";
+import HistoryIcon from "../Icons/HistoryIcon";
 
 const SideBar = (props: RouteComponentProps) => {
 
@@ -21,6 +22,9 @@ const SideBar = (props: RouteComponentProps) => {
             </div>
             <div className="side-bar-item" onClick={e => forward("genres")}>
                 <div className="side-bar-item-content"><GenresIcon/>&emsp;Genres</div>
+            </div>
+            <div className="side-bar-item" onClick={e => forward("history")}>
+                <div className="side-bar-item-content"><HistoryIcon/>&emsp;History</div>
             </div>
         </div>
     );

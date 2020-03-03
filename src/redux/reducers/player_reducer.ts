@@ -2,7 +2,8 @@ import {Action, AudioState} from "../../types/redux";
 
 const initialState: AudioState = {
     episode: Object(),
-    playButton: ""
+    playButton: "",
+    slider: 0
 };
 
 const playerReducer = (state = initialState, action: Action) => {
@@ -13,6 +14,8 @@ const playerReducer = (state = initialState, action: Action) => {
         case "SET_ACTIVE_PLAY_BUTTON":
             let newPlayEpisode = action.payload.episode_title;
             return {...state, playButton: newPlayEpisode};
+        case "SET_SLIDER":
+            return {...state, slider: action.payload.currentTime};
         default:
             return state;
     }

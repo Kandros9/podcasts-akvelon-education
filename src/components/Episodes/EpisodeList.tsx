@@ -5,7 +5,8 @@ import {Episode} from "../../types/data";
 import EpisodeItem from "./Episode";
 
 type Props = RouteComponentProps & {
-    episodes: Array<Episode>
+    episodes: Array<Episode>,
+    podcastId: string,
 };
 
 const EpisodeList = (props: Props) => {

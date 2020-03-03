@@ -1,4 +1,4 @@
-import {Episode, Podcast, PodcastSearchItem} from "../../types/data";
+import {Episode, Podcast, PodcastDetail, PodcastSearchItem, PodcastShortInfo} from "../../types/data";
 
 export const addBestPodcastsAction = (podcasts: Array<Podcast>) => ({
     type: "ADD_BEST_PODCASTS",
@@ -34,6 +34,34 @@ export const addSearchResultAction = (results: Array<PodcastSearchItem>, next_of
         results: results,
         offset: next_offset,
         colors: colors
+    }
+});
+
+export const addMyPodcastsAction = (podcastShort: PodcastShortInfo) => ({
+    type: "ADD_MY_PODCASTS",
+    payload: {
+        my_podcast: podcastShort
+    }
+});
+
+export const deleteMyPodcastsAction = (podcastId: string) => ({
+    type: "DELETE_MY_PODCASTS",
+    payload: {
+        my_podcast_id: podcastId
+    }
+});
+
+export const setLastPlaytimeAction = (podcastId: string) => ({
+    type: "SET_LAST_PLAYTIME",
+    payload: {
+        my_podcast_id: podcastId
+    }
+});
+
+export const setSliderAction = (currentTime: number) => ({
+    type: "SET_SLIDER",
+    payload: {
+        currentTime: currentTime
     }
 });
 

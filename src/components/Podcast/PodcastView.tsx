@@ -8,9 +8,14 @@ import language from "../../assets/svg/language.svg"
 import country from "../../assets/svg/country.svg"
 import total_episodes from "../../assets/svg/total_episodes.svg"
 import since from "../../assets/svg/since.svg"
+import tick from "../../assets/svg/tick.svg"
 import moment from "moment";
 import EpisodeList from "../Episodes/EpisodeList";
 import EpisodesLoadingSpinner from "../LoadingSpinner/EpisodesLoadingSpinner";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../redux/reducers";
+import {addMyPodcastsAction} from "../../redux/actions";
+import {isSubscribed} from "../../helpers/persist_storage";
 
 interface MatchParams {
     id: string;
@@ -25,6 +30,9 @@ const PodcastView = (props: Props) => {
     const [genres, setGenres] = useState([] as JSX.Element[]);
     const [episodes, setEpisodes] = useState([] as Episode[]);
     const [isEpisodesLoading, setEpisodesLoading] = useState(false);
+    const dispatch = useDispatch();
+    const [subscribed, setSubscribed] = useState(false);
+    const myPodcasts = useSelector((state: RootState) => state.myPodcasts);
 
     const podcastId = window.location.pathname.split("/")[2];
 
@@ -37,6 +45,7 @@ const PodcastView = (props: Props) => {
                 }).map((genre: Genre) => <div key={genre.id} className="genre">{genre.name}</div>))
             });
             setEpisodes(podcast.episodes);
+            setSubscribed(isSubscribed(podcast.id, myPodcasts.my_podcasts));
             setLoading(false);
         });
     }, []);
@@ -51,14 +60,30 @@ const PodcastView = (props: Props) => {
         });
     };
 
+    const subscribePodcast = () => {
+        dispatch(addMyPodcastsAction(
+            {id: podcast.id, title: podcast.title, thumbnail: podcast.thumbnail, publisher: podcast.publisher, last_played: 0}
+        ));
+        setSubscribed(true);
+    };
+
     return (isLoading ? <LoadingSpinner/> :
             <div className="podcast-container">
                 <div className="podcast-header">
                     <img src={podcast.thumbnail} alt="Cover" className="podcast-image"/>
-                    <div>
+                    <div className="podcast-header-info">
                         <h1>{podcast.title}</h1>
                         <h3>By {podcast.publisher}</h3>
-                        <button className="subscribe-btn" onClick={e => window.open(podcast.website)}>Subscribe</button>
+                        {!subscribed ? <button className="subscribe-btn" onClick={subscribePodcast}>Subscribe</button> :
+                            <button className="subscribe-btn-added">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path d="M504.502,75.496c-9.997-9.998-26.205-9.998-36.204,0L161.594,382.203L43.702,264.311c-9.997-9.998-26.205-9.997-36.204,0
+			                                c-9.998,9.997-9.998,26.205,0,36.203l135.994,135.992c9.994,9.997,26.214,9.99,36.204,0L504.502,111.7
+			                                C514.5,101.703,514.499,85.494,504.502,75.496z"/>
+                                </svg>
+                                Subscribed
+                            </button>
+                        }
                         <button className="website-btn" onClick={e => window.open(podcast.website)}>Website</button>
                     </div>
                 </div>
@@ -90,9 +115,10 @@ const PodcastView = (props: Props) => {
                         </div>
                     </div>
                 </div>
-                <EpisodeList episodes={episodes} {...props}/>
+                <EpisodeList episodes={episodes} podcastId={podcast.id} {...props}/>
                 <div className="load-block">
-                    {podcast.next_episode_pub_date && (isEpisodesLoading ? <EpisodesLoadingSpinner/> : <div className="load-button" onClick={loadNextEpisodes}>Load more</div>)}
+                    {podcast.next_episode_pub_date && (isEpisodesLoading ? <EpisodesLoadingSpinner/> :
+                        <div className="load-button" onClick={loadNextEpisodes}>Load more</div>)}
                 </div>
             </div>
     );

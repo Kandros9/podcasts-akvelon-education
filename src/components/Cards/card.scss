@@ -3,6 +3,7 @@
 .card {
   position: relative;
   margin-bottom: 5%;
+  transition-duration: 0.3s;
 
   &:hover {
     cursor: pointer;

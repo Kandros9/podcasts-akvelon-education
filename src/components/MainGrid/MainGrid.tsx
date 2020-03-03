@@ -7,6 +7,7 @@ import Discover from "../DiscoverPage/DiscoverPage";
 import Podcast from "../Podcast/PodcastView";
 import {RouteComponentProps, withRouter} from "react-router";
 import SearchArea from "../Search/SearchArea";
+import MyPodcastList from "../MyPodcasts/MyPodcastList";
 
 
 const MainGrid = (props: RouteComponentProps) => {
@@ -30,6 +31,8 @@ const MainGrid = (props: RouteComponentProps) => {
                                 return <Podcast {...props}/>;
                         case 'SEARCH':
                                 return <SearchArea param={param} setParam={setParam} {...props}/>;
+                        case 'MY PODCASTS':
+                                return <MyPodcastList {...props}/>;
                         default:
                                 return null;
                 }

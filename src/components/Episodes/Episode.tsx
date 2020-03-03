@@ -5,22 +5,24 @@ import {RouteComponentProps} from "react-router-dom";
 import moment from "moment";
 import PlayIcon from "../Icons/PlayIcon";
 import {useDispatch, useSelector} from "react-redux";
-import {addEpisodeToPlayerAction, setActivePlayButtonAction} from "../../redux/actions";
+import {addEpisodeToPlayerAction, setActivePlayButtonAction, setLastPlaytimeAction} from "../../redux/actions";
 import {RootState} from "../../redux/reducers";
 
 type Props = RouteComponentProps & {
-    episode: Episode
+    episode: Episode,
+    podcastId: string,
 };
 
 const EpisodeItem = (props: Props) => {
 
-    const { episode } = props;
+    const { episode, podcastId } = props;
     const dispatch = useDispatch();
     const player = useSelector((state: RootState) => state.player);
 
     const playEpisode = () => {
         dispatch(addEpisodeToPlayerAction(episode));
-        dispatch(setActivePlayButtonAction(episode.title))
+        dispatch(setActivePlayButtonAction(episode.title));
+        dispatch(setLastPlaytimeAction(podcastId));
     };
 
     const episodeDuration = () => {
