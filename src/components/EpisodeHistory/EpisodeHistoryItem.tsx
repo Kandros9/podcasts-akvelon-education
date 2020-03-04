@@ -2,8 +2,6 @@ import React from 'react';
 import './episodes_history.scss'
 import {EpisodeListened} from "../../types/data";
 import {RouteComponentProps} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../redux/reducers";
 import {episodeDuration} from "../../helpers/tools";
 
 type Props = RouteComponentProps & {

@@ -1,10 +1,10 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import '../Cards/card.scss'
 import './genres.scss'
-import {fetchGenres, fetchSearch} from "../../api";
+import {fetchGenres} from "../../api";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
-import {Genre, Search as SearchData} from "../../types/data";
+import {Genre} from "../../types/data";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/reducers";
 import {addGenresAction} from "../../redux/actions";

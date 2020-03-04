@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './episodes.scss'
 import {Episode, PodcastDetail} from "../../types/data";
 import {RouteComponentProps} from "react-router-dom";

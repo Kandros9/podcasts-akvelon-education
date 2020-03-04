@@ -8,7 +8,6 @@ import language from "../../assets/svg/language.svg"
 import country from "../../assets/svg/country.svg"
 import total_episodes from "../../assets/svg/total_episodes.svg"
 import since from "../../assets/svg/since.svg"
-import tick from "../../assets/svg/tick.svg"
 import moment from "moment";
 import EpisodeList from "../Episodes/EpisodeList";
 import EpisodesLoadingSpinner from "../LoadingSpinner/EpisodesLoadingSpinner";

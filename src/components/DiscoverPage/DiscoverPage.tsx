@@ -3,13 +3,11 @@ import './discover.scss'
 import '../Cards/card.scss'
 import {getCardsImage} from "../../helpers/average_color";
 import {fetchBestPodcasts, getImagesColor} from "../../api";
-import Card from "../Cards/Card";
 import {Colors, Podcast} from "../../types/data";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {addBestPodcastsAction, addBestPodcastsCardsAction} from "../../redux/actions";
 import {RootState} from "../../redux/reducers";
-import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import CardContainer from "../Cards/CardContainer";
 
 const Discover = (props: RouteComponentProps) => {

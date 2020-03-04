@@ -1,7 +1,5 @@
 import React, {createRef} from 'react';
 import './card.scss'
-
-import {Podcast} from "../../types/data";
 import {RouteComponentProps} from "react-router-dom";
 
 type Props = RouteComponentProps & {

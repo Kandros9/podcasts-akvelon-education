@@ -1,7 +1,6 @@
 import axios, { defaultAxios } from "./axios-config";
 
 
-
 export const getImagesColor = async (image_urls: Array<string>) => {
     const response = await defaultAxios.post("/process_image/get_color", {image_urls});
     return response.data;

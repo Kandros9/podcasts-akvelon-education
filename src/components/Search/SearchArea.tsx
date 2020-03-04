@@ -4,8 +4,6 @@ import {fetchSearchPodcasts, getImagesColor} from "../../api";
 import {Colors, PodcastSearchItem} from "../../types/data";
 import {RouteComponentProps} from "react-router-dom";
 import {getCardsImage} from "../../helpers/average_color";
-import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
-import Card from "../Cards/Card";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/reducers";
 import {addSearchResultAction} from "../../redux/actions";

@@ -3,10 +3,7 @@ import MainGrid from "./MainGrid/MainGrid";
 import {createBrowserHistory} from 'history';
 import {Router, Switch, Route, Redirect} from 'react-router-dom';
 import "./App.scss"
-import Discover from "./DiscoverPage/DiscoverPage";
-import PodcastView from "./Podcast/PodcastView";
 import Player from "./AudioPlayer/AudioPlayer";
-import SearchArea from "./Search/SearchArea";
 
 const history = createBrowserHistory();
 

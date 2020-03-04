@@ -3,7 +3,6 @@ import {
     EpisodeListened,
     Genre,
     Podcast,
-    PodcastDetail,
     PodcastSearchItem,
     PodcastShortInfo
 } from "../../types/data";

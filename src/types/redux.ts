@@ -2,10 +2,8 @@ import {
     Episode,
     EpisodeListened, Genre,
     Podcast,
-    PodcastDetail,
     PodcastSearchItem,
     PodcastShortInfo,
-    SearchPodcasts
 } from "./data";
 
 export type Action = {

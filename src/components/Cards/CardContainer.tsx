@@ -1,14 +1,8 @@
-import React, {useEffect, useState} from 'react';
-import {fetchBestPodcastsByGenre, fetchSearchPodcasts, getImagesColor} from "../../api";
-import {Colors, Genre, Podcast, PodcastSearchItem} from "../../types/data";
+import React from 'react';
+import {Podcast, PodcastSearchItem} from "../../types/data";
 import {RouteComponentProps} from "react-router-dom";
-import {getCardsImage} from "../../helpers/average_color";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import Card from "../Cards/Card";
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../redux/reducers";
-import {addSearchResultAction} from "../../redux/actions";
-import EpisodesLoadingSpinner from "../LoadingSpinner/EpisodesLoadingSpinner";
 
 
 type Props = RouteComponentProps & {
