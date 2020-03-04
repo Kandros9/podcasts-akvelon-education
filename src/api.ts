@@ -32,3 +32,8 @@ export const fetchSearchPodcasts = async (q: string, offset: number = 0) => {
     const response = await axios.get(`https://listen-api.listennotes.com/api/v2/search?q=${q}&sort_by_date=0&type=podcast&offset=${offset}&only_in=title%2Cdescription&safe_mode=1`);
     return response.data;
 };
+
+export const fetchBestPodcastsByGenre = async (genreId: string) => {
+    const response = await axios.get(`https://listen-api.listennotes.com/api/v2/best_podcasts?genre_id=${genreId}&page=1&safe_mode=1`);
+    return response.data;
+};

@@ -5,6 +5,7 @@ import MyPodcastsIcon from "../Icons/MyPodcastsIcon";
 import GenresIcon from "../Icons/GenresIcon";
 import {RouteComponentProps} from "react-router";
 import HistoryIcon from "../Icons/HistoryIcon";
+import logo from "../../assets/png/powered_by_listennotes.png"
 
 const SideBar = (props: RouteComponentProps) => {
 
@@ -25,6 +26,9 @@ const SideBar = (props: RouteComponentProps) => {
             </div>
             <div className="side-bar-item" onClick={e => forward("history")}>
                 <div className="side-bar-item-content"><HistoryIcon/>&emsp;History</div>
+            </div>
+            <div className="listennotes-logo">
+                <img src={logo}/>
             </div>
         </div>
     );

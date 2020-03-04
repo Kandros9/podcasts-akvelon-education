@@ -21,8 +21,8 @@ const App = () => {
                         <Route path="/discover"/>
                         <Route path='/podcast/:id'/>
                     </Switch>
+                    <div className="player"><Player/></div>
                 </Router>
-            <div className="player"><Player/></div>
         </>
     );
 };

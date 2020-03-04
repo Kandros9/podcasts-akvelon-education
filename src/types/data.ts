@@ -68,3 +68,9 @@ export interface PodcastShortInfo {
     publisher: string,
     last_played: number
 }
+
+export interface EpisodeListened extends Episode {
+    podcastId: string,
+    podcastTitle: string,
+    paused_on: number
+}

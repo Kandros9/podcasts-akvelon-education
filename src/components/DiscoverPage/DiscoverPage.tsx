@@ -10,6 +10,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addBestPodcastsAction, addBestPodcastsCardsAction} from "../../redux/actions";
 import {RootState} from "../../redux/reducers";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import CardContainer from "../Cards/CardContainer";
 
 const Discover = (props: RouteComponentProps) => {
 
@@ -30,14 +31,7 @@ const Discover = (props: RouteComponentProps) => {
     }, []);
 
 
-    return <div className="card-container">
-        {isLoading ? <LoadingSpinner/> :
-            <>
-                {podcasts.best_podcasts.map((podcast: Podcast, index: number) =>
-                    <Card key={podcast.id} id={podcast.id} title={podcast.title} thumbnail={podcast.thumbnail}
-                          cardColor={podcasts.best_podcasts_cards[index]} {...props}/>)}
-            </>}
-    </div>;
+    return <CardContainer isLoading={isLoading} podcasts={podcasts.best_podcasts} podcastsSearch={[]} colors={podcasts.best_podcasts_cards} {...props}/>;
 };
 
 

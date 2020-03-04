@@ -6,16 +6,27 @@ import ReactAudioPlayer from 'react-audio-player';
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/reducers";
 import EpisodesLoadingSpinner from "../LoadingSpinner/EpisodesLoadingSpinner";
-import {setSliderAction} from "../../redux/actions";
+import {setPausedOnAction, setSliderAction} from "../../redux/actions";
+import {isEpisodePresent} from "../../helpers/persist_storage";
 
 
 const Player = () => {
 
     const player = useSelector((state: RootState) => state.player);
+    const episodes = useSelector((state: RootState) => state.episodesListened).episodes_listened;
     const [isLoaded, setLoaded] = useState(false);
     const [playerObject, setPlayerObject] = useState({} as HTMLAudioElement);
     const dispatch = useDispatch();
     let playerElement = createRef<HTMLAudioElement>();
+
+    const getPausedOnTime = () => {
+        let currTime = 0;
+        let index = isEpisodePresent(player.episode.id, episodes);
+        if (index !== -1) {
+            currTime = episodes[index].paused_on;
+        }
+        return currTime;
+    };
 
     useEffect(() => {
         setPlayerObject(playerElement.current!)
@@ -23,7 +34,9 @@ const Player = () => {
 
     const onPause = (event: Event) => {
         // @ts-ignore
-        dispatch(setSliderAction(event.target.currentTime));
+        let time = event.target.currentTime;
+        dispatch(setSliderAction(time));
+        dispatch(setPausedOnAction(time, player.episode.id))
     };
 
     window.onclose = () => {
@@ -32,12 +45,19 @@ const Player = () => {
 
     const onCanPlay = () => setLoaded(true);
 
-    const onLoadedMetadata = (e: any) => e.target.currentTime = player.slider;
+    const onLoadedMetadata = (e: any) => {
+        let currTime = player.slider !== 0 ? player.slider : getPausedOnTime();
+        console.log(currTime)
+        e.target.currentTime = currTime;
+    };
 
     const onAbort = () => {
         setLoaded(false);
     };
 
+    const onStop = () => {
+        setLoaded(false);
+    };
     const showLoading = () => {
         if (player.episode.audio && !isLoaded) {
             return <EpisodesLoadingSpinner/>
@@ -58,6 +78,7 @@ const Player = () => {
             onPause={onPause}
             onCanPlay={onCanPlay}
             onAbort={onAbort}
+            onStop={onStop}
             onLoadedMetadata={onLoadedMetadata}
             ref={playerElement}
         />

@@ -1,4 +1,12 @@
-import {Episode, Podcast, PodcastDetail, PodcastSearchItem, PodcastShortInfo} from "../../types/data";
+import {
+    Episode,
+    EpisodeListened,
+    Genre,
+    Podcast,
+    PodcastDetail,
+    PodcastSearchItem,
+    PodcastShortInfo
+} from "../../types/data";
 
 export const addBestPodcastsAction = (podcasts: Array<Podcast>) => ({
     type: "ADD_BEST_PODCASTS",
@@ -65,3 +73,24 @@ export const setSliderAction = (currentTime: number) => ({
     }
 });
 
+export const addListenedEpisodeAction = (episode: EpisodeListened) => ({
+    type: "ADD_LISTENED_EPISODE",
+    payload: {
+        episode_listened: episode
+    }
+});
+
+export const setPausedOnAction = (time: number, episodeId: number) => ({
+    type: "SET_PAUSED_ON",
+    payload: {
+        episode_id: episodeId,
+        time: time
+    }
+});
+
+export const addGenresAction = (genres: Array<Genre>) => ({
+    type: "ADD_GENRES",
+    payload: {
+        genres: genres
+    }
+});

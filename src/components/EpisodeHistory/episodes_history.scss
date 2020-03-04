@@ -1,0 +1,77 @@
+@import '../../components/base_tools.scss';
+$grey-theme: #6d7a88;
+
+.episodes {
+  @include details-block;
+  padding-left: 5%;
+
+  a {
+    color: black;
+  }
+}
+
+.episode-item {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2%;
+  position: relative;
+  min-height: 8rem;
+
+  h4 {
+    font-size: calcFluidFontSize(12, 22, 400, 1900);
+    width : 120%;
+    overflow:hidden;
+    display:inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  p {
+    color: $grey-theme;
+    margin: 0;
+    font-weight: normal;
+  }
+}
+
+.episode-header {
+  width: 70%;
+  margin-left: 2%;
+}
+
+.episode-image {
+  width: 7rem;
+  margin: 0 0 3% 0;
+  border-radius: 2px;
+}
+
+.play-button {
+  display: flex;
+  position: absolute;
+  bottom: 10%;
+  align-items: center;
+  font-weight: normal;
+  font-size: 0.9rem;
+  color: dimgrey;
+
+  svg {
+    cursor: pointer;
+    fill: #6d7a88;
+    width: 12%;
+    height: auto;
+    transition-duration: 0.3s;
+
+    &:hover {
+      fill: #c71e67;
+    }
+  }
+}
+.active {
+  svg {
+    cursor: pointer;
+    fill: #c71e67;
+    width: 12%;
+    height: auto;
+    transition-duration: 0.3s;
+  }
+}

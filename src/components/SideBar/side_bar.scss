@@ -4,6 +4,7 @@
   align-items: stretch;
   justify-content: flex-start;
   height: 100%;
+  position: relative;
 }
 
 .side-bar-item {
@@ -33,6 +34,18 @@
   color: #6d7a88;
   min-height: 50px;
   height: 8%;
+}
+
+.listennotes-logo {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 25%;
+
+  img {
+    width: 60%;
+    filter: opacity(70%);
+  }
 }
 
 

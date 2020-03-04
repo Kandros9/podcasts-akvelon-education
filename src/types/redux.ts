@@ -1,4 +1,12 @@
-import {Episode, Podcast, PodcastDetail, PodcastSearchItem, PodcastShortInfo, SearchPodcasts} from "./data";
+import {
+    Episode,
+    EpisodeListened, Genre,
+    Podcast,
+    PodcastDetail,
+    PodcastSearchItem,
+    PodcastShortInfo,
+    SearchPodcasts
+} from "./data";
 
 export type Action = {
     type: string;
@@ -24,4 +32,12 @@ export type SearchState = {
 
 export type MyPodcastsState = {
     my_podcasts: Array<PodcastShortInfo>;
+};
+
+export type EpisodesState = {
+    episodes_listened: Array<EpisodeListened>;
+};
+
+export type GenreState = {
+    genres: Array<Genre>;
 };

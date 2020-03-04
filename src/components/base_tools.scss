@@ -32,3 +32,23 @@ $grey-theme: #6d7a88;
   cursor: pointer;
   outline: none;
 }
+
+@mixin input-line {
+  border-radius: 5px;
+  border-spacing: 0;
+  border: 1px solid #E0E0E0;
+  height: 30px;
+  padding: 0 2% 0 30px;
+  font-size: 1.1rem;
+  color: dimgrey;
+  background: url(../assets/svg/search.svg) no-repeat scroll;
+  width: 15rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    cursor: text;
+  }
+}

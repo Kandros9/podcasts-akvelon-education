@@ -115,7 +115,7 @@ const PodcastView = (props: Props) => {
                         </div>
                     </div>
                 </div>
-                <EpisodeList episodes={episodes} podcastId={podcast.id} {...props}/>
+                <EpisodeList episodes={episodes} podcast={podcast} {...props}/>
                 <div className="load-block">
                     {podcast.next_episode_pub_date && (isEpisodesLoading ? <EpisodesLoadingSpinner/> :
                         <div className="load-button" onClick={loadNextEpisodes}>Load more</div>)}

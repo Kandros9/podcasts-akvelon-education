@@ -8,6 +8,9 @@ import Podcast from "../Podcast/PodcastView";
 import {RouteComponentProps, withRouter} from "react-router";
 import SearchArea from "../Search/SearchArea";
 import MyPodcastList from "../MyPodcasts/MyPodcastList";
+import EpisodeHistoryList from "../EpisodeHistory/EpisodesHistoryList";
+import GenreList from "../Genres/GenreList";
+import GenreArea from "../Genres/GenreArea";
 
 
 const MainGrid = (props: RouteComponentProps) => {
@@ -18,13 +21,15 @@ const MainGrid = (props: RouteComponentProps) => {
 
         let title = parameter && parameter.split("-")[0].replace("%20", " ");
 
-        let total =  parameter && parameter.split("-")[1];
+        let id =  parameter && parameter.split("-")[1];
 
-        let page_name = window.location.pathname.split("/")[1].toUpperCase().replace("_", " ");
-        page_name = (title && total) ? page_name + " - " + title + ` (total ${total})`: page_name;
+        let location = window.location.pathname.split("/")[1].toUpperCase().replace("_", " ");
+
+        let page_name = location;
+        page_name = (title && id) ? title : page_name;
 
         const renderMainArea = () => {
-                switch (page_name) {
+                switch (location) {
                         case 'DISCOVER':
                                 return <Discover {...props}/>;
                         case 'PODCAST':
@@ -33,6 +38,12 @@ const MainGrid = (props: RouteComponentProps) => {
                                 return <SearchArea param={param} setParam={setParam} {...props}/>;
                         case 'MY PODCASTS':
                                 return <MyPodcastList {...props}/>;
+                        case 'HISTORY':
+                                return <EpisodeHistoryList {...props}/>;
+                        case 'GENRES':
+                                return <GenreList {...props}/>;
+                        case 'GENRE':
+                                return <GenreArea genreId={id} {...props}/>;
                         default:
                                 return null;
                 }

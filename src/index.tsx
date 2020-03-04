@@ -13,7 +13,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 const persistConfig = {
     key: 'root',
     storage: storage,
-    whitelist: ['myPodcasts', 'player']
+    whitelist: ['myPodcasts', 'player', 'episodesListened']
 };
 
 const pReducer = persistReducer(persistConfig, rootReducer);

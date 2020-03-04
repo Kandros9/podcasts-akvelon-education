@@ -1,0 +1,28 @@
+@import '../../components/base_tools.scss';
+
+.container {
+  padding: 2% 7% 5% 5%;
+}
+
+.input-filter {
+  margin: 0;
+  @include input-line;
+}
+
+.genres-list {
+  padding: 0;
+  margin-top: 4%;
+  width: 80%;
+
+  li {
+    padding: 2%;
+    list-style-type: none;
+    border-top: 1px lightgrey solid;
+    background-color: white;
+
+    &:hover {
+      background-color: #f8f8f8;
+      cursor: pointer;
+    }
+  }
+}
